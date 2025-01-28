@@ -1,0 +1,30 @@
+use master
+GO
+
+--Validamos si existe la base de datos
+IF EXISTS(select * from sys.databases where name = 'ApiPruebaParqueadero')
+BEGIN 
+    DROP DATABASE parqueadero
+END 
+GO
+--creacion de db
+CREATE DATABASE [ApiPruebaParqueadero]
+GO 
+USE [ApiPruebaParqueadero]
+GO
+
+CREATE SCHEMA [ApiPruebaParqueadero];
+GO
+
+CREATE TABLE Vehiculos(
+	Id int IDENTITY NOT NULL,
+	Tipovehiculo nvarchar NOT NULL,
+	MarcaVehiculo nvarchar NOT NULL,
+	Placa nvarchar(max) NOT NULL,
+	HoraIngreso datetime2(7) NOT NULL,
+	HoraSalida datetime2(7),
+	ValorTotal int,
+	Descuento bit NOT NULL,
+	NumFactura nvarchar
+);
+GO
