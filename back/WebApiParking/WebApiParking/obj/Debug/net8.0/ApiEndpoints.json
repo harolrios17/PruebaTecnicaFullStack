@@ -1,0 +1,91 @@
+[
+  {
+    "ContainingType": "WebApiParking.Controllers.VehiculosController",
+    "Method": "AddVehiculo",
+    "RelativePath": "api/Vehiculos/AddVehiculo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Obj",
+        "Type": "WebApiParking.Repository.AddVehiculo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApiParking.Controllers.VehiculosController",
+    "Method": "GetVehiculoPorPlaca",
+    "RelativePath": "api/Vehiculos/BuscarPorPlaca/{placa}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "placa",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApiParking.Controllers.VehiculosController",
+    "Method": "DeleteVehiculo",
+    "RelativePath": "api/Vehiculos/DeleteIdVehiculo/{IdVeh}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdVeh",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApiParking.Controllers.VehiculosController",
+    "Method": "EditVehiculo",
+    "RelativePath": "api/Vehiculos/EditVehiculo/{IdVeh}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdVeh",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Obj",
+        "Type": "WebApiParking.Repository.AddVehiculo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApiParking.Controllers.VehiculosController",
+    "Method": "GetVehiculo",
+    "RelativePath": "api/Vehiculos/ListarVehiculo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[WebApiParking.Models.Vehiculo, WebApiParking, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

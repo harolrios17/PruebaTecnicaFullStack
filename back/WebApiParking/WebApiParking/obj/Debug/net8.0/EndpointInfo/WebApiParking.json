@@ -1,0 +1,249 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "WebApiParking",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Vehiculos/ListarVehiculo": {
+      "get": {
+        "tags": [
+          "Vehiculos"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Vehiculo"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Vehiculo"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Vehiculo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Vehiculos/BuscarPorPlaca/{placa}": {
+      "get": {
+        "tags": [
+          "Vehiculos"
+        ],
+        "parameters": [
+          {
+            "name": "placa",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Vehiculos/AddVehiculo": {
+      "post": {
+        "tags": [
+          "Vehiculos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddVehiculo"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddVehiculo"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddVehiculo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Vehiculos/EditVehiculo/{IdVeh}": {
+      "put": {
+        "tags": [
+          "Vehiculos"
+        ],
+        "parameters": [
+          {
+            "name": "IdVeh",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddVehiculo"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddVehiculo"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddVehiculo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Vehiculos/DeleteIdVehiculo/{IdVeh}": {
+      "delete": {
+        "tags": [
+          "Vehiculos"
+        ],
+        "parameters": [
+          {
+            "name": "IdVeh",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddVehiculo": {
+        "type": "object",
+        "properties": {
+          "tipoVehiculo": {
+            "type": "string",
+            "nullable": true
+          },
+          "marcaVehiculo": {
+            "type": "string",
+            "nullable": true
+          },
+          "placaVehiculo": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorTotal": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "descuento": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "numFactura": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Vehiculo": {
+        "required": [
+          "marcaVehiculo",
+          "placa",
+          "tipovehiculo"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tipovehiculo": {
+            "type": "string",
+            "nullable": true
+          },
+          "marcaVehiculo": {
+            "type": "string",
+            "nullable": true
+          },
+          "placa": {
+            "type": "string",
+            "nullable": true
+          },
+          "horaIngreso": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "horaSalida": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "valorTotal": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "descuento": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "numFactura": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
