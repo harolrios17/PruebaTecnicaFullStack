@@ -1,0 +1,48 @@
+<mat-card>
+  <h2>{{ isEditMode ? 'Editar Vehículo' : 'Agregar Vehículo' }}</h2>
+
+  <form [formGroup]="vehiculoForm" (ngSubmit)="onSubmit()">
+    <!-- Tipo de Vehículo -->
+    <mat-form-field appearance="fill" class="full-width" *ngIf="!isEditMode">
+      <mat-label>Tipo de Vehículo</mat-label>
+      <mat-select formControlName="tipovehiculo">
+        <mat-option *ngFor="let option of options" [value]="option.value">
+          {{ option.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Marca del Vehículo -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Marca del Vehículo</mat-label>
+      <input matInput formControlName="marcaVehiculo" required />
+    </mat-form-field>
+
+    <!-- Placa -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Placa</mat-label>
+      <input matInput formControlName="placaVehiculo" required />
+    </mat-form-field>
+
+    <!-- Descuento -->
+    <mat-slide-toggle formControlName="descuento" *ngIf="isEditMode">¿Aplica Descuento?</mat-slide-toggle>
+
+    <!-- Número de Factura -->
+    <mat-form-field appearance="fill" class="full-width" *ngIf="isEditMode">
+      <mat-label>Número de Factura</mat-label>
+      <input matInput formControlName="numFactura" />
+    </mat-form-field>
+
+    <!-- Botones -->
+    <div class="form-actions">
+      <button mat-flat-button color="primary" type="submit" [disabled]="vehiculoForm.invalid">
+        {{ isEditMode ? 'Guardar Cambios' : 'Registrar Vehículo' }}
+      </button>
+      <button mat-stroked-button color="warn" type="button" (click)="router.navigate(['/'])">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</mat-card>
+
+

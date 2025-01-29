@@ -1,0 +1,71 @@
+<h3>Lista de Carros</h3>
+
+<button mat-raised-button color="primary" (click)="editVehiculo()">Registrar entrada</button>
+<br>
+<br>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let vehiculo"> {{vehiculo.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipovehiculo">
+      <th mat-header-cell *matHeaderCellDef> Tipo vehiculo </th>
+      <td mat-cell *matCellDef="let vehiculo"> {{vehiculo.tipovehiculo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="marcaVehiculo">
+      <th mat-header-cell *matHeaderCellDef> Marca Vehiculo </th>
+      <td mat-cell *matCellDef="let vehiculo"> {{vehiculo.marcaVehiculo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="placa">
+      <th mat-header-cell *matHeaderCellDef> Placa </th>
+      <td mat-cell *matCellDef="let vehiculo"> {{vehiculo.placa}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="horaIngreso">
+      <th mat-header-cell *matHeaderCellDef> Hora Ingreso </th>
+      <td mat-cell *matCellDef="let vehiculo"> {{vehiculo.horaIngreso | date:'short'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="horaSalida">
+      <th mat-header-cell *matHeaderCellDef> Hora Salida </th>
+      <td mat-cell *matCellDef="let vehiculo"> {{vehiculo.horaSalida | date:'short'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorTotal">
+      <th mat-header-cell *matHeaderCellDef> Valor a Pagar </th>
+      <td mat-cell *matCellDef="let vehiculo"> {{vehiculo.valorTotal}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descuento">
+      <th mat-header-cell *matHeaderCellDef> Descuento </th>
+      <td mat-cell *matCellDef="let vehiculo"> {{vehiculo.descuento}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="numFactura">
+      <th mat-header-cell *matHeaderCellDef> Número Factura </th>
+      <td mat-cell *matCellDef="let vehiculo"> {{vehiculo.numFactura}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let vehiculo">
+        <button mat-stroked-button (click)="editVehiculo(vehiculo.placa)">Edit</button>
+        <button mat-stroked-button (click)="deleteVehiculo(vehiculo.id)">Borrar</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5,10,25,100]"
+    showFirstLastButtons
+    aria-label="Select page of vehiculo"
+  ></mat-paginator>
+</div>
